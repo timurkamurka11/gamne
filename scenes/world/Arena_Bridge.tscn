@@ -1,0 +1,68 @@
+
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/arena/arena_bridge.png" id="1_arena"]
+[ext_resource type="Script" path="res://scripts/world/ArenaBridge.gd" id="2_script"]
+
+[sub_resource type="RectangleShape2D" id="Rect_top"]
+size = Vector2(1254, 366)
+
+[sub_resource type="RectangleShape2D" id="Rect_bottom"]
+size = Vector2(1254, 438)
+
+[sub_resource type="RectangleShape2D" id="Rect_left"]
+size = Vector2(204, 1254)
+
+[sub_resource type="RectangleShape2D" id="Rect_right"]
+size = Vector2(204, 1254)
+
+[sub_resource type="RectangleShape2D" id="Rect_fence_top"]
+size = Vector2(820, 38)
+
+[sub_resource type="RectangleShape2D" id="Rect_fence_bottom"]
+size = Vector2(820, 42)
+
+[node name="Arena_Bridge" type="Node2D"]
+script = ExtResource("2_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_arena")
+centered = false
+
+[node name="WorldCollisions" type="Node2D" parent="."]
+
+[node name="RiverTop" type="StaticBody2D" parent="WorldCollisions" groups=["world"]]
+position = Vector2(627, 183)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/RiverTop"]
+shape = SubResource("Rect_top")
+
+[node name="RiverBottom" type="StaticBody2D" parent="WorldCollisions" groups=["world"]]
+position = Vector2(627, 1035)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/RiverBottom"]
+shape = SubResource("Rect_bottom")
+
+[node name="LeftBlockedSide" type="StaticBody2D" parent="WorldCollisions" groups=["world"]]
+position = Vector2(102, 627)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/LeftBlockedSide"]
+shape = SubResource("Rect_left")
+
+[node name="RightBlockedSide" type="StaticBody2D" parent="WorldCollisions" groups=["world"]]
+position = Vector2(1152, 627)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/RightBlockedSide"]
+shape = SubResource("Rect_right")
+
+[node name="FenceTop" type="StaticBody2D" parent="WorldCollisions" groups=["world"]]
+position = Vector2(627, 376)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/FenceTop"]
+shape = SubResource("Rect_fence_top")
+
+[node name="FenceBottom" type="StaticBody2D" parent="WorldCollisions" groups=["world"]]
+position = Vector2(627, 770)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollisions/FenceBottom"]
+shape = SubResource("Rect_fence_bottom")

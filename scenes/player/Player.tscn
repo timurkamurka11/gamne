@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/projectiles/EnergyProjectile.tscn" id="2_projectile"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/bat_hit.mp3" id="3_bat"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/player_hurt.wav" id="4_hurt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 22.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_script")
+projectile_scene = ExtResource("2_projectile")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(0.13, 0.13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="BatHitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bat")
+volume_db = -7.0
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hurt")
+volume_db = -6.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = true
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+zoom = Vector2(0.95, 0.95)

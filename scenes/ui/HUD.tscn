@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://eva1iax3efqh"]
+
+[ext_resource type="Script" path="res://scripts/ui/HUD.gd" id="1_script"]
+
+[node name="HUD" type="CanvasLayer" groups=["hud"]]
+script = ExtResource("1_script")
+
+[node name="HeartsBox" type="HBoxContainer" parent="."]
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 230.0
+offset_bottom = 58.0
+theme_override_constants/separation = 8
+
+[node name="StatsLabel" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 58.0
+offset_right = 320.0
+offset_bottom = 86.0
+text = "WAVE: 1   KILLS: 0"

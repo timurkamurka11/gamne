@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/EnemyGothGirl.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/projectiles/EnemyDarkProjectile.tscn" id="2_dark"]
+[ext_resource type="PackedScene" path="res://scenes/items/EnergyDrink.tscn" id="3_drink"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/goth_damage.wav" id="4_damage"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 20.0
+
+[node name="Enemy_GothGirl" type="CharacterBody2D"]
+script = ExtResource("1_script")
+dark_projectile_scene = ExtResource("2_dark")
+drop_scene = ExtResource("3_drink")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -28)
+scale = Vector2(0.13, 0.13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_damage")
+volume_db = -5.0
